@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dark Mode Toggle</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+text-align: center;
+margin-top: 50px;
+transition: background 0.5s, color 0.5s;
+}
+.dark-mode {
+background-color: #222;
+color: white;
+}
+button {
+padding: 10px 20px;
+font-size: 18px;
+cursor: pointer;
+border: none;
+border-radius: 5px;
+background-color: black;
+color: white;
+}
+</style>
+</head>
+Example3 : Dark Mode Toggle Button that allows users to switch
+between Light Mode 🌞 and Dark Mode 🌙.
+✔ Click to switch between Dark & Light mode.
+✔ Background & text color changes dynamically.
+✔ Button text updates based on mode.
+<body>
+<h2>Click to Toggle Dark Mode</h2>
+<button id="toggleMode">Enable Dark Mode 🌙</button>
+<script>
+let button = document.getElementById("toggleMode");
+let body = document.body;
+// Check localStorage for saved mode
+if (localStorage.getItem("mode") === "dark") {
+body.classList.add("dark-mode");
+button.innerText = "Disable Dark Mode ☀️";
+}
+button.addEventListener("click"
+, function() {
+if (body.classList.contains("dark-mode")) {
+body.classList.remove("dark-mode");
+button.innerText = "Enable Dark Mode 🌙";
+} else {
+body.classList.add("dark-mode");
+button.innerText = "Disable Dark Mode ☀️";
+}
+});
+</script>
+</body>
+</html>

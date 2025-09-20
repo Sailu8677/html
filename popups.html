@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+2 <html lang="en">
+3 <head>
+4 <meta charset="UTF-8">
+5 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+6 <title>Popup Modal</title>
+7 <style>
+8 * {
+9 margin: 0;
+10 padding: 0;
+11 box-sizing: border-box;
+12 font-family: Arial, sans-serif;
+13 }
+14
+15 body {
+16 display: flex;
+17 justify-content: center;
+18 align-items: center;
+19 height: 100vh;
+20 background: #f0f0f0;
+21 }
+22
+23 .container {
+24 display: flex;
+25 justify-content: space-around;
+26 width: 60%;
+27 gap: 20px;
+28 }
+29
+30 .btn {
+31 padding: 12px 24px;
+32 font-size: 18px;
+33 border: none;
+34 cursor: pointer;
+35 border-radius: 5px;
+36 transition: 0.3s;
+37 }
+38
+39 .login-btn {
+40 background: #28a745;
+41 color: white;
+42 }
+43
+44 .signup-btn {
+45 background: #007bff;
+46 color: white;
+47 }
+48
+49 .btn:hover {
+50 opacity: 0.8;
+51 }
+10/03/2025, 18:36 popup.html
+localhost:52407/9b77158f-8da2-4ab4-a252-a8e1b2f021de/ 1/4
+5
+2
+5
+3
+/
+*
+P
+o
+p
+u
+p
+O
+v
+e
+r
+l
+a
+y
+*
+/
+5
+4
+.
+p
+o
+p
+u
+p
+-
+o
+v
+e
+r
+l
+a
+y
+{
+5
+5
+d
+i
+s
+p
+l
+a
+y
+:
+n
+o
+n
+e
+;
+5
+6
+p
+o
+s
+i
+t
+i
+o
+n
+:
+f
+i
+x
+e
+d
+;
+5
+7
+t
+o
+p
+:
+0
+;
+5
+8
+l
+e
+f
+t
+:
+0
+;
+5
+9
+w
+i
+d
+t
+h
+:
+1
+0
+0
+%
+;
+6
+0
+h
+e
+i
+g
+h
+t
+:
+1
+0
+0
+%
+;
+6
+1
+b
+a
+c
+k
+g
+r
+o
+u
+n
+d
+:
+r
+g
+b
+a
+(
+0
+,
+0
+,
+0
+,
+0
+.
+6
+)
+;
+6
+2
+j
+u
+s
+t
+i
+f
+y
+-
+c
+o
+n
+t
+e
+n
+t
+:
+c
+e
+n
+t
+e
+r
+;
+6
+3
+a
+l
+i
+g
+n
+-
+i
+t
+e
+m
+s
+:
+c
+e
+n
+t
+e
+r
+;
+6
+4
+}
+6
+5
+6
+6
+.
+p
+o
+p
+u
+p
+{
+6
+7
+b
+a
+c
+k
+g
+r
+o
+u
+n
+d
+:
+w
+h
+i
+t
+e
+;
+6
+8
+w
+i
+d
+t
+h
+:
+4
+0
+0
+p
+x
+;
+6
+9
+h
+e
+i
+g
+h
+t
+:
+2
+0
+0
+p
+x
+;
+7
+0
+p
+a
+d
+d
+i
+n
+g
+:
+3
+0
+p
+x
+;
+7
+1
+b
+o
+r
+d
+e
+r
+-
+r
+a
+d
+i
+u
+s
+:
+1
+0
+p
+x
+;
+7
+2
+t
+e
+x
+t
+-
+a
+l
+i
+g
+n
+:
+c
+e
+n
+t
+e
+r
+;
+7
+3
+p
+o
+s
+i
+t
+i
+o
+n
+:
+r
+e
+l
+a
+t
+i
+v
+e
+;
+7
+4
+b
+o
+x
+-
+s
+h
+a
+d
+o
+w
+:
+0
+p
+x
+5
+p
+x
+1
+5
+p
+x
+r
+g
+b
+a
+(
+0
+,
+0
+,
+0
+,
+0
+.
+3
+)
+;
+7
+5
+}
+7
+6
+7
+7
+.
+p
+o
+p
+u
+p
+h
+2
+{
+7
+8
+m
+a
+r
+g
+i
+n
+-
+b
+o
+t
+t
+o
+m
+:
+1
+0
+p
+x
+;
+7
+9
+}
+8
+0
+8
+1
+.
+p
+o
+p
+u
+p
+i
+n
+p
+u
+t
+{
+8
+2
+w
+i
+d
+t
+h
+:
+1
+0
+0
+%
+;
+8
+3
+p
+a
+d
+d
+i
+n
+g
+:
+1
+0
+p
+x
+;
+8
+4
+m
+a
+r
+g
+i
+n
+:
+1
+0
+p
+x
+0
+;
+8
+5
+b
+o
+r
+d
+e
+r
+:
+1
+p
+x
+s
+o
+l
+i
+d
+#
+c
+c
+c
+;
+8
+6
+b
+o
+r
+d
+e
+r
+-
+r
+a
+d
+i
+u
+s
+:
+5
+p
+x
+;
+8
+7
+}
+8
+8
+8
+9
+.
+p
+o
+p
+u
+p
+b
+u
+t
+t
+o
+n
+{
+9
+0
+b
+a
+c
+k
+g
+r
+o
+u
+n
+d
+:
+#
+2
+8
+a
+7
+4
+5
+;
+9
+1
+c
+o
+l
+o
+r
+:
+w
+h
+i
+t
+e
+;
+9
+2
+b
+o
+r
+d
+e
+r
+:
+n
+o
+n
+e
+;
+9
+3
+p
+a
+d
+d
+i
+n
+g
+:
+1
+0
+p
+x
+;
+9
+4
+w
+i
+d
+t
+h
+:
+1
+0
+0
+%
+;
+9
+5
+c
+u
+r
+s
+o
+r
+:
+p
+o
+i
+n
+t
+e
+r
+;
+9
+6
+b
+o
+r
+d
+e
+r
+-
+r
+a
+d
+i
+u
+s
+:
+5
+p
+x
+;
+9
+7
+f
+o
+n
+t
+-
+s
+i
+z
+e
+:
+1
+6
+p
+x
+;
+9
+8
+}
+9
+9
+1
+0
+0
+.
+p
+o
+p
+u
+p
+b
+u
+t
+t
+o
+n
+:
+h
+o
+v
+e
+r
+{
+1
+0
+1
+b
+a
+c
+k
+g
+r
+o
+u
+n
+d
+:
+#
+2
+1
+8
+8
+3
+8
+;
+1
+0
+2
+}
+1
+0
+3
+1
+0
+4
+/
+*
+C
+l
+o
+s
+e
+B
+u
+t
+t
+o
+n
+S
+t
+y
+l
+i
+n
+g
+*
+/
+1
+0
+5
+.
+c
+l
+o
+s
+e
+-
+b
+t
+n
+{
+1
+0
+/
+0
+3
+/
+2
+0
+2
+5, 1
+8:3
+6
+p
+o
+p
+u
+p.h
+t
+ml localhost:52407/9b77158f-8da2-4ab4-a252-a8e1b2f021de/
+2
+/
+4
+106 position: absolute;
+107 top: 0px;
+108 right: 0px;
+109 background: red;
+110 color: white;
+111 border: none;
+112 font-size: 14px;
+113 font-weight: bold;
+114 padding: 5px 10px;
+115 cursor: pointer;
+116 border-radius: 50%;
+117 width: 100%;
+118 height: 30px;
+119 display: flex;
+120 align-items: center;
+121 justify-content: center;
+122 }
+123
+124 .close-btn:hover {
+125 background: darkred;
+126 }
+127
+128 </style>
+129 </head>
+130 <body>
+131
+132 <div class="container">
+133 <button class="btn login-btn" onclick="openPopup('Login')">Login</button>
+134 <button class="btn signup-btn" onclick="openPopup('Sign Up')">Sign Up</button>
+135 </div>
+136
+137 <div class="popup-overlay" id="popupOverlay">
+138 <div class="popup">
+139 <button class="close-btn" onclick="closePopup()">X</button>
+140 <h2 id="popupTitle">Be an Ecommerce Expert</h2>
+141 <p>Subscribe to get the latest tips and insights.</p>
+142 <input type="email" placeholder="Enter your email" required>
+143 <button>Keep me in the loop</button>
+144 </div>
+145 </div>
+146
+147 <script>
+148 function openPopup(title) {
+149 document.getElementById("popupOverlay").style.display = "flex";
+150 document.getElementById("popupTitle").innerText = title;
+151 }
+152
+153 function closePopup() {
+154 document.getElementById("popupOverlay").style.display = "none";
+155 }
+156
+157 window.onclick = function(event) {
+158 if (event.target.id === "popupOverlay") {
+159 closePopup();
+10/03/2025, 18:36 popup.html
+localhost:52407/9b77158f-8da2-4ab4-a252-a8e1b2f021de/ 3/4
+160 }
+161 }
+162 </script>
+163
+164 </body>
+165 </html

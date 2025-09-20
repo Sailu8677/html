@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Form Validation</title>
+ <link rel="stylesheet" href="styles.css">
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+ background: #f4f4f4;
+ }
+
+ .container {
+ background: white;
+ padding: 20px;
+ border-radius: 8px;
+ box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+ width: 300px;
+ }
+
+ h2 {
+ text-align: center;
+ }
+
+ .form-group {
+ margin-bottom: 15px;
+ }
+
+ label {
+ display: block;
+ font-weight: bold;
+ }
+
+ input {
+ width: 100%;
+ padding: 8px;
+ border: 1px solid #ccc;
+ border-radius: 5px;
+ }
+
+ button {
+ width: 100%;
+ padding: 10px;
+ background: blue;
+ color: white;
+ border: none;
+
+ border-radius: 5px;
+ cursor: pointer;
+ }
+
+ button:hover {
+ background: darkblue;
+ }
+
+ .error {
+ color: red;
+ font-size: 12px;
+ height: 15px;
+ display: block;
+ }
+
+ </style>
+ </head>
+ <body>
+ <div class="container">
+ <h2>Register</h2>
+ <form id="myForm">
+ <div class="form-group">
+ <label for="name">Name</label>
+ <input type="text" id="name" name="name">
+ <small class="error"></small>
+ </div>
+
+ <div class="form-group">
+ <label for="email">Email</label>
+ <input type="email" id="email" name="email">
+ <small class="error"></small>
+ </div>
+
+ <div class="form-group">
+ <label for="password">Password</label>
+ <input type="password" id="password" name="password">
+ <small class="error"></small>
+ </div>
+
+ <button type="submit">Submit</button>
+ </form>
+ </div>
+
+ <script>
+
+ document.getElementById("myForm").addEventListener("submit", function(event) {
+ event.preventDefault(); // Prevent form submission
+
+ let isValid = true;
+
+ const name = document.getElementById("name");
+ const email = document.getElementById("email");
+ const password = document.getElementById("password");
+ const nameError = name.nextElementSibling;
+ const passwordError = password.nextElementSibling;
+ if (name.value.trim() === "") {
+ nameError.textContent = "Name is required";
+ isValid = false;
+ } else {
+ nameError.textContent = "";
+ }
+ const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+ if (!email.value.match(emailPattern)) {
+ emailError.textContent = "Enter a valid email";
+ isValid = false;
+ } else {
+ emailError.textContent = "";
+ }
+ if (password.value.length < 6) {
+ passwordError.textContent = "Password must be at least 6 characters";
+ isValid = false;
+ } else {
+ passwordError.textContent = "";
+ }
+
+ if (isValid) {
+ alert("Form submitted successfully! ✅");
+ document.getElementById("myForm").reset(); // Reset form
+ }
+ });
+
+ </script>
+ </body>
+ </html>
+         
